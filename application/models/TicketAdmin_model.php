@@ -13,6 +13,10 @@ class TicketAdmin_model extends CI_Model {
         return $this->db->get_where('ticket_admins', ['id' => $id])->row();
     }
 
+	public function get_admin_by_login($login) {
+        return $this->db->get_where('ticket_admins', ['login' => $login])->row();
+    }
+
     public function create_admin($data) {
         return $this->db->insert('ticket_admins', $data);
     }

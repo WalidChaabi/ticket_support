@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/support_ticket/';
 
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 $config['uri_protocol']	= 'REQUEST_URI';
 
