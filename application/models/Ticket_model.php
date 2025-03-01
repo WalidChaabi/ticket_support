@@ -36,5 +36,13 @@ class Ticket_model extends CI_Model {
     public function delete_ticket($id) {
         return $this->db->delete('tickets', ['id' => $id]);
     }
+
+	public function get_all_tickets() {
+		$this->db->select('tickets.id, tickets.title, tickets.description, ticket_status.name as status');
+		$this->db->from('tickets');
+		$this->db->join('ticket_status', 'tickets.ticket_status_is = ticket_status.id', 'left');
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 ?>

@@ -15,17 +15,24 @@ class TicketController extends CI_Controller
 		$this->load->model('TicketComment_model');
 	}
 
-	public function getTickets()
+	public function getUserTickets()
 	{
 		$user_id = $this->session->userdata('user_id');
 		$tickets = $this->Ticket_model->get_user_tickets($user_id);
 		echo json_encode($tickets);  // Use $tickets instead of $data['tickets']
 	}
+	public function getAllTickets()
+	{
+		$tickets = $this->Ticket_model->get_all_tickets();
+		echo json_encode($tickets);  // Use $tickets instead of $data['tickets']
+	}
+	
 	public function getTicketStatus()
 	{
 		$status = $this->TicketStatus_model->get_all_statuses();
 		echo json_encode($status);
 	}
+
 	public function createTicket()
 	{
 		$data = array(
@@ -56,7 +63,6 @@ class TicketController extends CI_Controller
 			echo json_encode(["status" => "error", "message" => "Failed to close ticket."]);
 		}
 	}
-
 
 	public function respondToTicket()
 	{
